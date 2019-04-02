@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dgrf.yamunakinare.ui.login;
+package org.dgrf.ksaman.ui.login;
 
 import java.io.IOException;
 import javax.inject.Named;
@@ -31,7 +31,8 @@ import org.dgrf.cloud.response.DGRFResponseCode;
 
 import org.dgrf.cloud.dto.DGRFCloudAuthCredentials;
 import org.dgrf.cloud.dto.DataConnDTO;
-import org.dgrf.ksaman.ui.db.DatabaseConnection;
+import org.dgrf.ksamancore.bl.service.DatabaseConnection;
+
 
 
 /**

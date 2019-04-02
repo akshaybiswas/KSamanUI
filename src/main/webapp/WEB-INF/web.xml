@@ -33,7 +33,7 @@
     <!-- Login filter -->
     <filter>
         <filter-name>LoginFilter</filter-name>
-        <filter-class>org.dgrf.yamunakinare.ui.login.LoginFilter</filter-class>
+        <filter-class>org.dgrf.ksaman.ui.login.LoginFilter</filter-class>
     </filter>
     <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
     <filter-mapping>

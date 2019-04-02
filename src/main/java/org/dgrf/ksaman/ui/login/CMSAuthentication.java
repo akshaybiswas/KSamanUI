@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dgrf.yamunakinare.ui.login;
+package org.dgrf.ksaman.ui.login;
 
 import org.dgrf.cloud.client.DataConnClient;
 import org.dgrf.cloud.dto.DataConnDTO;

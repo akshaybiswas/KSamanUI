@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dgrf.yamunakinare.ui.login;
+package org.dgrf.ksaman.ui.login;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -53,8 +53,8 @@ public class MenuController {
             //DefaultSubMenu rootMenu = new DefaultSubMenu("User Menu");
             
             
-            DefaultMenuItem articleList = new DefaultMenuItem("Browse");
-            String termBrowseUrl = "/edit/ksamanDummy?faces-redirect=true";
+            DefaultMenuItem articleList = new DefaultMenuItem("Parva");
+            String termBrowseUrl = "/edit/parva/ParvaList?faces-redirect=true";
             articleList.setOutcome(termBrowseUrl);
             menuModel.addElement(articleList);
             //menuModel.addElement(menuMaker.getUserMenu());
