@@ -6,8 +6,13 @@
 package org.dgrf.ksaman.ui.parva;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.dgrf.cloud.response.DGRFResponseCode;
+import org.dgrf.ksamancore.DTO.ParvaDTO;
 import org.dgrf.ksamancore.bl.service.KSCoreService;
 
 /**
@@ -21,10 +26,64 @@ public class ParvaList implements Serializable{
     /**
      * Creates a new instance of ParvaList
      */
+    
+    private List<ParvaDTO> parvaDTOList;
+    private ParvaDTO selectedParva;
+    
     public ParvaList() {
     }
-    public void getParvaList() {
+    public void loadAllParvaList() {
         KSCoreService ksCoreService = new KSCoreService();
-        ksCoreService.getAllParva();
+        parvaDTOList = ksCoreService.getParvaDTOList();
     }
+
+    public List<ParvaDTO> getParvaDTOList() {
+        return parvaDTOList;
+    }
+
+    public void setParvaDTOList(List<ParvaDTO> parvaDTOList) {
+        this.parvaDTOList = parvaDTOList;
+    }
+    
+    public String editParva() {
+        return "ParvaEdit?faces-redirect=true&parvaId=" + selectedParva.getParvaId();
+    }
+    
+    public String deleteParva() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getFlash().setKeepMessages(true);
+        FacesMessage fm;
+        int responseCode;
+        int parvaId = selectedParva.getParvaId();
+        
+        ParvaDTO parvaDTO = new ParvaDTO();
+        parvaDTO.setParvaId(parvaId);
+        
+        KSCoreService ksCoreService = new KSCoreService();
+        responseCode = ksCoreService.removeParva(parvaDTO);
+        
+        if (responseCode == DGRFResponseCode.SUCCESS) {
+            fm = new FacesMessage("Parva delete alert:", "Parva data deleted Successfully.");
+            context.addMessage(null, fm);
+            return "ParvaList?faces-redirect=true";
+        } else if (responseCode == DGRFResponseCode.DB_NON_EXISTING) {
+            fm = new FacesMessage("Parva delete alert:", "Selected Parva not found.");
+            context.addMessage(null, fm);
+            return "ParvaList?faces-redirect=true";
+        } else {
+            fm = new FacesMessage("Parva delete alert:", "Something went wrong, please contact admin.");
+            context.addMessage(null, fm);
+            return "ParvaList?faces-redirect=true";
+        }
+    }
+
+    public ParvaDTO getSelectedParva() {
+        return selectedParva;
+    }
+
+    public void setSelectedParva(ParvaDTO selectedParva) {
+        this.selectedParva = selectedParva;
+    }
+    
+    
 }

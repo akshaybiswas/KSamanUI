@@ -176,7 +176,7 @@ public class LoginController implements Serializable {
     }
 
     public String moveToDefaultHost() {
-        productID = 5;
+        productID = 6;
 
         DGRFTenantListClient dgrftlc = new DGRFTenantListClient();
         List<TenantDTO> tenantDTOs = dgrftlc.getTenantList(productID);
