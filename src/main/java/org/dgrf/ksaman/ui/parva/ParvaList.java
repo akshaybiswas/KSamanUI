@@ -46,7 +46,7 @@ public class ParvaList implements Serializable{
     }
     
     public String editParva() {
-        return "ParvaEdit?faces-redirect=true&parvaId=" + selectedParva.getParvaId();
+        return "/edit/parva/ParvaEdit?faces-redirect=true&parvaId=" + selectedParva.getParvaId();
     }
     
     public String deleteParva() {
@@ -65,15 +65,15 @@ public class ParvaList implements Serializable{
         if (responseCode == DGRFResponseCode.SUCCESS) {
             fm = new FacesMessage("Parva delete alert:", "Parva data deleted Successfully.");
             context.addMessage(null, fm);
-            return "ParvaList?faces-redirect=true";
+            return "/edit/parva/ParvaList?faces-redirect=true";
         } else if (responseCode == DGRFResponseCode.DB_NON_EXISTING) {
             fm = new FacesMessage("Parva delete alert:", "Selected Parva not found.");
             context.addMessage(null, fm);
-            return "ParvaList?faces-redirect=true";
+            return "/edit/parva/ParvaList?faces-redirect=true";
         } else {
             fm = new FacesMessage("Parva delete alert:", "Something went wrong, please contact admin.");
             context.addMessage(null, fm);
-            return "ParvaList?faces-redirect=true";
+            return "/edit/parva/ParvaList?faces-redirect=true";
         }
     }
 

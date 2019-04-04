@@ -53,11 +53,21 @@ public class MenuController {
             //DefaultSubMenu rootMenu = new DefaultSubMenu("User Menu");
             
             
-            DefaultMenuItem articleList = new DefaultMenuItem("Parva");
-            String termBrowseUrl = "/edit/parva/ParvaList?faces-redirect=true";
-            articleList.setOutcome(termBrowseUrl);
-            menuModel.addElement(articleList);
+            DefaultMenuItem maintextList = new DefaultMenuItem("Shloka Gucchho");
+            String maintextBrowseUrl = "/edit/maintext/ParvaListTabView?faces-redirect=true";
+            maintextList.setOutcome(maintextBrowseUrl);
+            menuModel.addElement(maintextList);
+            
+            DefaultMenuItem parvaList = new DefaultMenuItem("Parva");
+            String parvaBrowseUrl = "/edit/parva/ParvaList?faces-redirect=true";
+            parvaList.setOutcome(parvaBrowseUrl);
+            menuModel.addElement(parvaList);
             //menuModel.addElement(menuMaker.getUserMenu());
+            
+            DefaultMenuItem ubachaList = new DefaultMenuItem("Ubacha");
+            String ubachaBrowseUrl = "/edit/ubacha/UbachaList?faces-redirect=true";
+            ubachaList.setOutcome(ubachaBrowseUrl);
+            menuModel.addElement(ubachaList);
 
         }
     }

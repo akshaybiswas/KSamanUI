@@ -9,8 +9,8 @@
 
     <ui:define name="content">
         <f:metadata>
-            <f:viewParam name="parvaId" value="#{parvaEdit.parvaId}"></f:viewParam>
-            <f:viewAction action="#{parvaEdit.fillValues()}" />
+            <f:viewParam name="ubachaId" value="#{ubachaEdit.ubachaId}"></f:viewParam>
+            <f:viewAction action="#{ubachaEdit.fillValues()}" />
         </f:metadata>
         <h:form enctype="multipart/form-data">
             <br />
@@ -18,15 +18,18 @@
             <p:panelGrid columns="2" layout="grid" >
 
                 <h:outputLabel value="Parva Id:" />
-                <p:inputText value="#{parvaEdit.parvaId}" disabled="true" required="true" />
+                <p:inputText value="#{ubachaEdit.ubachaId}" disabled="true" required="true" />
 
                 <h:outputText value="Parva Name:" />
-                <p:inputText value="#{parvaEdit.parvaName}" required="true" />
+                <p:inputText value="#{ubachaEdit.ubachaName}" required="true" />
+                
+                <h:outputText value="Parva Bachan:" />
+                <p:inputText value="#{ubachaEdit.ubachaBachan}" required="true" />
             </p:panelGrid>
 
             <div class="card">
-                <p:commandButton value="Save" action="#{parvaEdit.updateSelectedParva()}"></p:commandButton>
-                <p:button value="Back" outcome="ParvaList" />
+                <p:commandButton value="Save" action="#{ubachaEdit.updateSelectedUbacha()}"></p:commandButton>
+                <p:button value="Back" outcome="UbachaList" />
             </div>
         </h:form>
     </ui:define>

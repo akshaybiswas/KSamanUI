@@ -30,7 +30,11 @@ public class ParvaEdit implements Serializable {
     
     public void fillValues() {
         KSCoreService ksCoreService = new KSCoreService();
-        parvaDTO = ksCoreService.getSelectedParvaDTO(parvaId);
+        parvaDTO = new ParvaDTO();
+        
+        parvaDTO.setParvaId(parvaId);
+        
+        parvaDTO = ksCoreService.getParvaDTO(parvaDTO);
         
         parvaId = parvaDTO.getParvaId();
         parvaName = parvaDTO.getParvaName();
@@ -51,11 +55,11 @@ public class ParvaEdit implements Serializable {
         if (responseCode == 0) {
             fm = new FacesMessage("Parva changes alert:", "Parva data changed Successfully.");
             context.addMessage(null, fm);
-            return "ParvaList?faces-redirect=true";
+            return "/edit/parva/ParvaList?faces-redirect=true";
         } else {
             fm = new FacesMessage("Parva changes alert:", "Either Parva not found or something went wrong.");
             context.addMessage(null, fm);
-            return "ParvaEdit?faces-redirect=true&parvaId=" + parvaId;
+            return "/edit/parva/ParvaEdit?faces-redirect=true&parvaId=" + parvaId;
         }
     }
 

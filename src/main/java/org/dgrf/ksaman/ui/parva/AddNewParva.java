@@ -46,15 +46,15 @@ public class AddNewParva implements Serializable {
         if (responseCode == DGRFResponseCode.SUCCESS) {
             fm = new FacesMessage("Parva creation alert:", "Parva added Successfully.");
             context.addMessage(null, fm);
-            return "ParvaList?faces-redirect=true";
+            return "/edit/parva/ParvaList?faces-redirect=true";
         } else if (responseCode == DGRFResponseCode.DB_DUPLICATE) {
             fm = new FacesMessage("Parva creation alert:", "Parva already exsists.");
             context.addMessage(null, fm);
-            return "AddNewParva?faces-redirect=true";
+            return "/edit/parva/AddNewParva?faces-redirect=true";
         } else {
             fm = new FacesMessage("Parva creation alert:", "duh! Something went wrong :(");
             context.addMessage(null, fm);
-            return "AddNewParva?faces-redirect=true";
+            return "/edit/parva/AddNewParva?faces-redirect=true";
         }
     }
 
