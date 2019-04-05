@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="parvaId" value="#{shlokaListTabView.parvaId}"></f:viewParam>
+            <f:viewParam name="adhyayId" value="#{shlokaListTabView.adhyayId}"></f:viewParam>
+            <f:viewAction action="#{shlokaListTabView.loadAllShlokaList()}"/>
+        </f:metadata>
+        <h3>Shloka Samagra</h3>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-7 ui-lg-9">
+                <h:form id="form">
+                    <p:dataGrid var="shloka" value="#{shlokaListTabView.shlokaDTOList}" columns="1" layout="grid">
+
+                        <p:panel>
+                            <h:panelGrid columns="4" style="width:100%">
+                                <p:column>
+                                    <h:outputText value="#{shloka.getUbachaId()}" />
+                                </p:column>
+
+                                <p:column>
+                                    <h:outputText value="#{shloka.getShlokaText()}" />
+                                </p:column>
+
+                                <p:column>
+                                    <h:outputText value="#{shloka.getShlokaLine()}" />
+                                </p:column>
+
+                                <p:column>
+                                    <h:outputText value="#{shloka.getShlokaNum()}" />
+                                </p:column>
+                            </h:panelGrid>
+                        </p:panel>
+
+                    </p:dataGrid>
+
+                </h:form>
+            </div>
+            <div class="ui-g-12 ui-md-5 ui-lg-3">
+                Action Menu List goes here.
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

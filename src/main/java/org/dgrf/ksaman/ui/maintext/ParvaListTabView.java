@@ -23,8 +23,6 @@ public class ParvaListTabView implements Serializable {
     /**
      * Creates a new instance of ParvaListTabView
      */
-    public ParvaListTabView() {
-    }
     
     private List<ParvaDTO> parvaDTOList;
     private ParvaDTO selectedParva;
