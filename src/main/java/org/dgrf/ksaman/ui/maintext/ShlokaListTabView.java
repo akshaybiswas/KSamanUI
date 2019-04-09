@@ -31,6 +31,8 @@ public class ShlokaListTabView implements Serializable {
     private int ubachaId;
     private int shlokaLine;
     private int shlokaNum;
+    private String ubachaName;
+    private String ubachaBachan;
     private String shlokaText;
     
     public void loadAllShlokaList() {
@@ -38,11 +40,19 @@ public class ShlokaListTabView implements Serializable {
         shlokaDTOList = ksCoreService.getShlokaList(parvaId, adhyayId);
         
         for(int i=0; i<shlokaDTOList.size(); i++) {
+            
             ubachaId = shlokaDTOList.get(i).getUbachaId();
+            ubachaName = shlokaDTOList.get(i).getUbachaName();
+            ubachaBachan = shlokaDTOList.get(i).getUbachaName();
+            
             shlokaText = shlokaDTOList.get(i).getShlokaText();
             shlokaLine = shlokaDTOList.get(i).getShlokaLine();
             shlokaNum = shlokaDTOList.get(i).getShlokaNum();
         }
+    }
+    
+    public String addShlokaBtn() {
+        return "AddNewShloka?faces-redirect=true&parvaId=" + parvaId +"&adhyayId=" + adhyayId;
     }
 
     public List<MaintextDTO> getShlokaDTOList() {
@@ -101,14 +111,27 @@ public class ShlokaListTabView implements Serializable {
         this.shlokaNum = shlokaNum;
     }
 
+    public String getUbachaName() {
+        return ubachaName;
+    }
+
+    public void setUbachaName(String ubachaName) {
+        this.ubachaName = ubachaName;
+    }
+
+    public String getUbachaBachan() {
+        return ubachaBachan;
+    }
+
+    public void setUbachaBachan(String ubachaBachan) {
+        this.ubachaBachan = ubachaBachan;
+    }
+
     public String getShlokaText() {
         return shlokaText;
     }
 
     public void setShlokaText(String shlokaText) {
         this.shlokaText = shlokaText;
-    }
-    
-    
-    
+    }  
 }
