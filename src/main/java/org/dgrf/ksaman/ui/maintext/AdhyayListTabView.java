@@ -23,23 +23,27 @@ public class AdhyayListTabView implements Serializable {
     /**
      * Creates a new instance of AdhyayListTabView
      */
-    
     private List<MaintextDTO> adhyayDTOList;
     private MaintextDTO selectedAdhyay;
     private int parvaId;
     private int adhyayId;
-    
-    public void loadAllAdhyayList() {
+
+    public String loadAllAdhyayList() {
         KSCoreService ksCoreService = new KSCoreService();
         adhyayDTOList = ksCoreService.getAdhyayIdList(parvaId);
-        
-        for(int i=0; i<adhyayDTOList.size(); i++) {
-            adhyayId = adhyayDTOList.get(i).getAdhyayId();
+
+        if (adhyayDTOList.isEmpty()) {
+            return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + 1;
+        } else {
+            for (int i = 0; i < adhyayDTOList.size(); i++) {
+                adhyayId = adhyayDTOList.get(i).getAdhyayId();
+            }
+            return "";
         }
     }
-    
+
     public String shlokaView() {
-        return "/edit/maintext/ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId +"&adhyayId=" + selectedAdhyay.getAdhyayId();
+        return "/edit/maintext/ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + selectedAdhyay.getAdhyayId();
     }
 
     public List<MaintextDTO> getAdhyayDTOList() {
@@ -73,9 +77,5 @@ public class AdhyayListTabView implements Serializable {
     public void setAdhyayId(int adhyayId) {
         this.adhyayId = adhyayId;
     }
-    
-    
 
-    
-    
 }

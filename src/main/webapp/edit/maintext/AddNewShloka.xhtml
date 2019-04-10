@@ -14,13 +14,13 @@
             <f:viewAction action="#{addNewShloka.fillValues()}" />
         </f:metadata>
 
-        <h:form enctype="multipart/form-data">
+        <h:form>
             <br />
-            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+            <p:growl id="growl" sticky="true" showDetail="true" life="3000" autoUpdate="true"/>
             <p:panelGrid style="margin-bottom:10px; font-size: 1.5rem; width: 50rem;"  columns="2" layout="grid" >
 
                 <h:outputLabel value="Parva Id:" />
-                <p:inputText value="#{addNewShloka.parvaId}" required="true" />
+                <p:inputText value="#{addNewShloka.parvaId}" disabled="true" required="true" />
 
                 <h:outputLabel value="Adhyay Id:" />
                 <p:inputText value="#{addNewShloka.adhyayId}" required="true" />
@@ -40,18 +40,15 @@
                     <f:selectItem itemLabel="||" itemValue="||" />
                 </p:selectOneButton>
 
-                <h:outputText value="Anubad Text:" />
-                <p:inputText value="#{addNewShloka.anubadText}" />
-
                 <p:outputLabel for="selectoneubacha" value="Select Ubacha:" />
                 <p:selectOneMenu id="selectoneubacha" value="#{addNewShloka.selectedUbachaId}" required="true">
                     <f:selectItems value="#{addNewShloka.ubachaListMap}" />
                 </p:selectOneMenu>
             </p:panelGrid>
 
-            <div class="card" style="margin-bottom:10px; font-size: 1.5rem;">
+            <div class="card">
                 <p:commandButton value="Save" action="#{addNewShloka.addNewShloka()}"></p:commandButton>
-                <p:commandButton value="Back" action="#{addNewShloka.previousPage()}"></p:commandButton>
+                <p:commandButton value="Back" action="#{addNewShloka.previousPage()}" immediate="true"></p:commandButton>
             </div>
         </h:form>
     </ui:define>

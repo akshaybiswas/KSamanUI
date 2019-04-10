@@ -7,8 +7,12 @@ package org.dgrf.ksaman.ui.maintext;
 
 import java.io.Serializable;
 import java.util.List;
+import javafx.beans.binding.Bindings;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.dgrf.cloud.response.DGRFResponseCode;
 import org.dgrf.ksamancore.DTO.MaintextDTO;
 import org.dgrf.ksamancore.bl.service.KSCoreService;
 
@@ -23,7 +27,6 @@ public class ShlokaListTabView implements Serializable {
     /**
      * Creates a new instance of ShlokaListTabView
      */
-    
     private List<MaintextDTO> shlokaDTOList;
     private MaintextDTO selectedShloka;
     private int parvaId;
@@ -34,17 +37,17 @@ public class ShlokaListTabView implements Serializable {
     private String ubachaName;
     private String ubachaBachan;
     private String shlokaText;
-    
+
     public void loadAllShlokaList() {
         KSCoreService ksCoreService = new KSCoreService();
         shlokaDTOList = ksCoreService.getShlokaList(parvaId, adhyayId);
-        
-        for(int i=0; i<shlokaDTOList.size(); i++) {
-            
+
+        for (int i = 0; i < shlokaDTOList.size(); i++) {
+
             ubachaId = shlokaDTOList.get(i).getUbachaId();
             ubachaName = shlokaDTOList.get(i).getUbachaName();
             ubachaBachan = shlokaDTOList.get(i).getUbachaName();
-            
+
             shlokaText = shlokaDTOList.get(i).getShlokaText();
             shlokaLine = shlokaDTOList.get(i).getShlokaLine();
             shlokaNum = shlokaDTOList.get(i).getShlokaNum();
@@ -52,7 +55,42 @@ public class ShlokaListTabView implements Serializable {
     }
     
     public String addShlokaBtn() {
-        return "AddNewShloka?faces-redirect=true&parvaId=" + parvaId +"&adhyayId=" + adhyayId;
+        return "AddNewShloka?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
+    }
+
+    public String editShlokaBtn() {
+        return "EditExsistingShloka?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId + "&shlokaNum=" + selectedShloka.getShlokaNum() + "&shlokaLine=" + selectedShloka.getShlokaLine();
+    }
+    
+    public String deleteShloka() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getFlash().setKeepMessages(true);
+        FacesMessage fm;
+        int responseCode;
+        
+        MaintextDTO maintextDTO = new MaintextDTO();
+        
+        maintextDTO.setParvaId(parvaId);
+        maintextDTO.setAdhyayId(adhyayId);
+        maintextDTO.setShlokaNum(selectedShloka.getShlokaNum());
+        maintextDTO.setShlokaLine(selectedShloka.getShlokaLine());
+        
+        KSCoreService ksCoreService = new KSCoreService();
+        responseCode = ksCoreService.removeShloka(maintextDTO);
+        
+        if (responseCode == DGRFResponseCode.SUCCESS) {
+            fm = new FacesMessage("Shloka delete alert:", "Shloka data deleted Successfully.");
+            context.addMessage(null, fm);
+            return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
+        } else if (responseCode == DGRFResponseCode.DB_NON_EXISTING) {
+            fm = new FacesMessage("Shloka delete alert:", "Selected Shloka not found.");
+            context.addMessage(null, fm);
+            return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
+        } else {
+            fm = new FacesMessage("Shloka delete alert:", "Something went wrong, please contact admin.");
+            context.addMessage(null, fm);
+            return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
+        }
     }
 
     public List<MaintextDTO> getShlokaDTOList() {
@@ -133,5 +171,5 @@ public class ShlokaListTabView implements Serializable {
 
     public void setShlokaText(String shlokaText) {
         this.shlokaText = shlokaText;
-    }  
+    }
 }

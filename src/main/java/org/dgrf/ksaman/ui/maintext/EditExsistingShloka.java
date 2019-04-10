@@ -13,22 +13,24 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.dgrf.cloud.response.DGRFResponseCode;
 import org.dgrf.ksamancore.DTO.MaintextDTO;
 import org.dgrf.ksamancore.DTO.UbachaDTO;
-import org.dgrf.cloud.response.DGRFResponseCode;
 import org.dgrf.ksamancore.bl.service.KSCoreService;
+import org.dgrf.ksamancore.db.entities.MaintextPK;
 
 /**
  *
  * @author dgrfiv
  */
-@Named(value = "addNewShloka")
+@Named(value = "editExsistingShloka")
 @ViewScoped
-public class AddNewShloka implements Serializable {
+public class EditExsistingShloka implements Serializable{
 
     /**
-     * Creates a new instance of AddNewShloka
+     * Creates a new instance of EditExsistingShloka
      */
+    
     private MaintextDTO maintextDTO;
     private int parvaId;
     private int adhyayId;
@@ -54,32 +56,17 @@ public class AddNewShloka implements Serializable {
         maintextDTO = new MaintextDTO();
         maintextDTO.setParvaId(parvaId);
         maintextDTO.setAdhyayId(adhyayId);
+        maintextDTO.setShlokaNum(shlokaNum);
+        maintextDTO.setShlokaLine(shlokaLine);
         
-        int maxShlokaNum = kSCoreService.getMaxShlokaNumber(maintextDTO);
+        maintextDTO = kSCoreService.getMaintextDTO(maintextDTO);
         
-        maintextDTO = new MaintextDTO();
-        maintextDTO.setParvaId(parvaId);
-        maintextDTO.setAdhyayId(adhyayId);
-        maintextDTO.setMaxShlokaNum(maxShlokaNum);
-        
-        int maxShlokaLine = kSCoreService.getMaxShlokaLine(maintextDTO);
-        if(maxShlokaLine > 1){
-            shlokaNum = maxShlokaNum + 1;
-            shlokaLine = 1;
-            endChar = "|";
-        } else {
-            shlokaNum = maxShlokaNum;
-            shlokaLine = maxShlokaLine + 1;
-            endChar = "||";
-        }
-        if (shlokaNum == 0) {
-            shlokaNum = 1;
-            endChar = "|";
-        }
-        
+        shlokaText = maintextDTO.getShlokaText();
+        endChar = maintextDTO.getEndChar();
+        selectedUbachaId = maintextDTO.getUbachaId();
     }
 
-    public String addNewShloka() {
+    public String updateShloka() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getExternalContext().getFlash().setKeepMessages(true);
         FacesMessage fm;
@@ -97,20 +84,20 @@ public class AddNewShloka implements Serializable {
         maintextDTO.setEndChar(endChar);
 
         KSCoreService kSCoreService = new KSCoreService();
-        responseCode = kSCoreService.addNewShloka(maintextDTO);
+        responseCode = kSCoreService.updateShloka(maintextDTO);
 
         if (responseCode == DGRFResponseCode.SUCCESS) {
-            fm = new FacesMessage("Shloka creation alert:", "Shloka added Successfully.");
+            fm = new FacesMessage("Shloka update alert:", "Shloka updateed Successfully.");
             context.addMessage(null, fm);
             return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
-        } else if (responseCode == DGRFResponseCode.DB_DUPLICATE) {
-            fm = new FacesMessage("Shloka creation alert:", "Shloka already exsists.");
+        } else if (responseCode == DGRFResponseCode.DB_NON_EXISTING) {
+            fm = new FacesMessage("Shloka update alert:", "Shloka not exsists.");
             context.addMessage(null, fm);
-            return "AddNewShloka?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
+            return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
         } else {
-            fm = new FacesMessage("Shloka creation alert:", "duh! Something went wrong :(");
+            fm = new FacesMessage("Shloka update alert:", "duh! Something went wrong :(");
             context.addMessage(null, fm);
-            return "AddNewShloka?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
+            return "EditExsistingShloka?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId + "&shloakNum=" + shlokaNum + "&shlokaLine=" + shlokaLine;
         }
     }
 
@@ -174,6 +161,14 @@ public class AddNewShloka implements Serializable {
         this.anubadText = anubadText;
     }
 
+    public String getEndChar() {
+        return endChar;
+    }
+
+    public void setEndChar(String endChar) {
+        this.endChar = endChar;
+    }
+
     public int getSelectedUbachaId() {
         return selectedUbachaId;
     }
@@ -189,13 +184,7 @@ public class AddNewShloka implements Serializable {
     public void setUbachaListMap(Map<String, Integer> ubachaListMap) {
         this.ubachaListMap = ubachaListMap;
     }
-
-    public String getEndChar() {
-        return endChar;
-    }
-
-    public void setEndChar(String endChar) {
-        this.endChar = endChar;
-    }
-
+    
+    
+    
 }
