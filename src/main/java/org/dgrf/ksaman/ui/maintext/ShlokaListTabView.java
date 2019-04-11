@@ -7,7 +7,6 @@ package org.dgrf.ksaman.ui.maintext;
 
 import java.io.Serializable;
 import java.util.List;
-import javafx.beans.binding.Bindings;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
