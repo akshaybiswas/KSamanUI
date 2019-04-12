@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="parvaId" value="#{translatedTextTabView.parvaId}"></f:viewParam>
+            <f:viewParam name="adhyayId" value="#{translatedTextTabView.adhyayId}"></f:viewParam>
+            <f:viewParam name="shlokaNum" value="#{translatedTextTabView.shlokaNum}"></f:viewParam>
+            <f:viewAction action="#{translatedTextTabView.loadTranslatedText()}"/>
+        </f:metadata>
+        <h3>Shloka Translation</h3>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-7 ui-lg-9">
+                <h:form id="form">
+                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                    <p:panelGrid>
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="7">
+                                    <h:outputText value="Parva:  " />
+                                    <h:outputText value="#{translatedTextTabView.parvaName}" />
+                                    <h:outputText value="  Adhyay:  " />
+                                    <h:outputText value="#{translatedTextTabView.adhyayId}" />
+                                </p:column>
+                            </p:row>
+                        </f:facet>
+
+                        <p:row>
+                            <p:column colspan="3">
+                                <h:outputText value="Ubacha:" />
+                            </p:column>
+                            <p:column colspan="4">
+                                <h:outputText value="#{translatedTextTabView.ubachaName}" />
+                                <h:outputText value="  " />
+                                <h:outputText value="#{translatedTextTabView.ubachaBachan}" />
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="3">
+                                <h:outputText value="Shloka:" />
+                            </p:column>
+                            <p:column colspan="4">
+                                    <p:dataTable var="shloka" value="#{translatedTextTabView.translationDTOList}">
+                                        <p:column headerText="Shloka">
+                                            <h:outputText value="#{shloka.getShlokaText()}" />
+                                        </p:column>
+
+                                        <p:column headerText="Sankha">
+                                            <h:outputText value="#{shloka.getShlokaNum()}" />
+                                            <h:outputText value="," />
+                                            <h:outputText value="#{shloka.getShlokaLine()}" />
+                                        </p:column>
+                                    </p:dataTable>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column colspan="3">
+                                <h:outputText value="Anubad:" />
+                            </p:column>
+                            <p:column colspan="4">
+                                <p:inputTextarea rows="6" value="#{translatedTextTabView.shlokaAnubad}"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:commandButton value="Back" action="#{translatedTextTabView.previousPage()}"></p:commandButton>
+                </h:form>
+            </div>
+            <div class="ui-g-12 ui-md-5 ui-lg-3">
+                Action Menu List goes here.
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

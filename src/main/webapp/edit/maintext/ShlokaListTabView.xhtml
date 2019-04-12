@@ -50,6 +50,11 @@
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
                             </p:commandButton>
                         </p:column>
+                        <p:column headerText="Actions">
+                            <p:commandButton value="View Translation" action="#{shlokaListTabView.viewTranslationBtn()}">
+                                <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
+                            </p:commandButton>
+                        </p:column>
                     </p:dataTable>
 
                 </h:form>
