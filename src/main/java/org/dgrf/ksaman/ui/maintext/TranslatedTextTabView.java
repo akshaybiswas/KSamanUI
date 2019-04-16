@@ -7,8 +7,11 @@ package org.dgrf.ksaman.ui.maintext;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.dgrf.cloud.response.DGRFResponseCode;
 import org.dgrf.ksamancore.DTO.MaintextDTO;
 import org.dgrf.ksamancore.bl.service.KSCoreService;
 
@@ -34,6 +37,7 @@ public class TranslatedTextTabView implements Serializable {
     private String ubachaBachan;
     private String shlokaText;
     private String shlokaAnubad;
+    private MaintextDTO maintextDTO;
 
     public void loadTranslatedText() {
         KSCoreService ksCoreService = new KSCoreService();
@@ -59,6 +63,37 @@ public class TranslatedTextTabView implements Serializable {
             shlokaText = translationDTOList.get(i).getShlokaText();
             shlokaLine = translationDTOList.get(i).getShlokaLine();
 
+        }
+    }
+    
+    public String updateShlokaAnubad() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().getFlash().setKeepMessages(true);
+        FacesMessage fm;
+        int responseCode;
+
+        maintextDTO = new MaintextDTO();
+
+        maintextDTO.setParvaId(parvaId);
+        maintextDTO.setAdhyayId(adhyayId);
+        maintextDTO.setShlokaNum(shlokaNum);
+        maintextDTO.setAnubadText(shlokaAnubad);
+
+        KSCoreService kSCoreService = new KSCoreService();
+        responseCode = kSCoreService.updateMaintextTranslation(maintextDTO);
+
+        if (responseCode == DGRFResponseCode.SUCCESS) {
+            fm = new FacesMessage(FacesMessage.SEVERITY_INFO,"Shloka Anubad update alert:", "Shloka Anubad updated Successfully.");
+            context.addMessage(null, fm);
+            return "TranslatedTextTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId + "&shlokaNum=" + shlokaNum;
+        } else if (responseCode == DGRFResponseCode.DB_NON_EXISTING) {
+            fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Shloka Anubad update alert:", "Shloka Anubad not exsists.");
+            context.addMessage(null, fm);
+            return "TranslatedTextTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId + "&shlokaNum=" + shlokaNum;
+        } else {
+            fm = new FacesMessage(FacesMessage.SEVERITY_FATAL,"Shloka Anubad update alert:", "duh! Something went wrong :(");
+            context.addMessage(null, fm);
+            return "TranslatedTextTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId + "&shlokaNum=" + shlokaNum;
         }
     }
 
@@ -153,6 +188,5 @@ public class TranslatedTextTabView implements Serializable {
     public void setParvaName(String parvaName) {
         this.parvaName = parvaName;
     }
-
-    
+  
 }

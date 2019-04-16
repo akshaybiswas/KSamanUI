@@ -112,6 +112,18 @@ public class LoginController implements Serializable {
         }
 
     }
+    
+    public void browseDataConnection() {
+        UserAuthClient uac = new UserAuthClient();
+        userAuthDTO.setUserId("bhaduri");
+        userAuthDTO.setPassword("1234");
+        userAuthDTO.setProductId(productID);
+        userAuthDTO.setTenantId(1);
+        userAuthDTO = uac.authenticateUser(userAuthDTO);
+        setAuthCredentials(userAuthDTO);
+        setDataConnection();
+    }
+    
     private void setDataConnection() {
         DataConnDTO dataConnDTO = CMSAuthentication.authenticateSubcription(KSamanClientAuthCredentialValue.AUTH_CREDENTIALS);
         DatabaseConnection dc = new DatabaseConnection(dataConnDTO.getDbAdminUser(), dataConnDTO.getDbAdminPassword(), dataConnDTO.getDbConnUrl());
@@ -302,5 +314,5 @@ public class LoginController implements Serializable {
     public void setIconAndLogo(String iconAndLogo) {
         this.iconAndLogo = iconAndLogo;
     }
-
+    
 }

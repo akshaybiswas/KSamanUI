@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./browse-template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="landing-wrapper">
+        <div class="landing-header">
+            <div class="landing-header-content clearfix">
+                <p:graphicImage name="images/logo.png" library="ksaman" width="80" height="40"/>
+
+                <a id="menu-button" href="#">
+                    <span class="fa fa-bars"></span>
+                </a>
+                <ul id="menu">
+                    <li> <h:link outcome="browse/MahabharatParvaView" value="মহাভারত"></h:link></li>
+                    <li> <h:link outcome="Login" value="Login"></h:link></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</ui:composition>
