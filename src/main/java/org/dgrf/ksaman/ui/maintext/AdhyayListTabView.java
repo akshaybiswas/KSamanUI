@@ -43,7 +43,8 @@ public class AdhyayListTabView implements Serializable {
     }
 
     public String shlokaView() {
-        return "/edit/maintext/ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + selectedAdhyay.getAdhyayId();
+        adhyayId = selectedAdhyay.getAdhyayId();
+        return "ShlokaListView";
     }
 
     public List<MaintextDTO> getAdhyayDTOList() {

@@ -93,7 +93,8 @@ public class ShlokaListTabView implements Serializable {
     }
     
     public String viewTranslationBtn() {
-        return "TranslatedTextTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId + "&shlokaNum=" + selectedShloka.getShlokaNum();
+        shlokaNum= selectedShloka.getShlokaNum();
+        return "TranslatedTextView";
     }
 
     public List<MaintextDTO> getShlokaDTOList() {

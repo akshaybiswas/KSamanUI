@@ -97,10 +97,6 @@ public class TranslatedTextTabView implements Serializable {
         }
     }
 
-    public String previousPage() {
-        return "ShlokaListTabView?faces-redirect=true&parvaId=" + parvaId + "&adhyayId=" + adhyayId;
-    }
-
     public List<MaintextDTO> getTranslationDTOList() {
         return translationDTOList;
     }

@@ -26,6 +26,7 @@ public class ParvaListTabView implements Serializable {
     
     private List<ParvaDTO> parvaDTOList;
     private ParvaDTO selectedParva;
+    private int parvaId;
     
     public void loadAllParvaList() {
         KSCoreService ksCoreService = new KSCoreService();
@@ -33,7 +34,8 @@ public class ParvaListTabView implements Serializable {
     }
     
     public String adhyayView() {
-        return "/edit/maintext/AdhyayListTabView?faces-redirect=true&parvaId=" + selectedParva.getParvaId();
+        parvaId = selectedParva.getParvaId();
+        return "AdhyayListView";
     }
 
     public List<ParvaDTO> getParvaDTOList() {
@@ -51,6 +53,15 @@ public class ParvaListTabView implements Serializable {
     public void setSelectedParva(ParvaDTO selectedParva) {
         this.selectedParva = selectedParva;
     }
+
+    public int getParvaId() {
+        return parvaId;
+    }
+
+    public void setParvaId(int parvaId) {
+        this.parvaId = parvaId;
+    }
+
     
     
 }

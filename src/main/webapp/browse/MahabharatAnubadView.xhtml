@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../../WEB-INF/template.xhtml"
+                template="/WEB-INF/browse-template.xhtml"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
@@ -50,12 +50,11 @@
                     </div>
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-12">
-                            <p:inputTextarea rows="8" value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;"/>
+                            <h:outputText value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;"/>
                         </div>
                     </div>
                     <div class="ui-g-nopad card">
-                        <p:commandButton value="Update" action="#{translatedTextTabView.updateShlokaAnubad()}"></p:commandButton>
-                        <p:button value="Back" outcome="ShlokaListTabView" />
+                        <p:button value="Back" outcome="MahabharatShlokaView" />
                     </div>
                 </h:form>
             </div>

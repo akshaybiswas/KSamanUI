@@ -2,25 +2,28 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/WEB-INF/browse-template.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
         <f:metadata>
-            <f:viewAction action="#{parvaListTabView.loadAllParvaList()}"/>
+            <f:viewParam name="parvaId" value="#{adhyayListTabView.parvaId}"></f:viewParam>
+            <f:viewAction action="#{adhyayListTabView.loadAllAdhyayList()}"/>
         </f:metadata>
-        <h3>Parva Samagra</h3>
+        <h3>Adhyay Samagra</h3>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-7 ui-lg-9">
-
+                <div class="ui-g card">
+                    <p:button value="Back" outcome="MahabharatParvaView" />
+                </div>
                 <h:form id="form">
-                    <p:dataGrid var="parva" value="#{parvaListTabView.parvaDTOList}" columns="3" layout="grid">
+                    <p:dataGrid var="adhyay" value="#{adhyayListTabView.adhyayDTOList}" columns="10" layout="grid">
 
                         <p:panel>
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:commandButton value="#{parva.getParvaName()}" action="#{parvaListTabView.adhyayView()}">
-                                    <f:setPropertyActionListener value="#{parva}" target="#{parvaListTabView.selectedParva}" />
+                                <p:commandButton value="#{adhyay.getAdhyayId()}" action="#{adhyayListTabView.shlokaView()}">
+                                    <f:setPropertyActionListener value="#{adhyay}" target="#{adhyayListTabView.selectedAdhyay}" />
                                 </p:commandButton>
                             </h:panelGrid>
                         </p:panel>

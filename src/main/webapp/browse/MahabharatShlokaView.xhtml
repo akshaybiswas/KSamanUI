@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../../WEB-INF/template.xhtml"
+                template="/WEB-INF/browse-template.xhtml"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
@@ -16,12 +16,11 @@
         <h3>Shloka Samagra</h3>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-7 ui-lg-9">
+
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="AdhyayListTabView" />
+                    <p:button value="Back" outcome="MahabharatAdhyayView" />
                 </div>
-                <h:form id="form" enctype="multipart/form-data">  
-                    <p:commandButton value="Add Shloka" action="#{shlokaListTabView.addShlokaBtn()}"></p:commandButton>
-                    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+                <h:form id="form">  
                     <p:dataTable var="shloka" value="#{shlokaListTabView.shlokaDTOList}">
                         <p:column headerText="Ubacha Name">
                             <h:outputText value="#{shloka.getUbachaName()}" />
@@ -42,17 +41,6 @@
                         <p:column headerText="Line">
                             <h:outputText value="#{shloka.getShlokaLine()}" />
                         </p:column>
-
-                        <p:column headerText="Actions">
-                            <p:commandButton value="Edit" action="#{shlokaListTabView.editShlokaBtn()}">
-                                <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
-                            </p:commandButton>
-                        </p:column>
-                        <p:column headerText="Actions">
-                            <p:commandButton value="Delete" action="#{shlokaListTabView.deleteShloka()}">
-                                <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
-                            </p:commandButton>
-                        </p:column>
                         <p:column headerText="Actions">
                             <p:commandButton value="Translation" action="#{shlokaListTabView.viewTranslationBtn()}">
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
@@ -62,6 +50,7 @@
 
                 </h:form>
             </div>
+
             <div class="ui-g-12 ui-md-5 ui-lg-3">
                 Action Menu List goes here.
             </div>
