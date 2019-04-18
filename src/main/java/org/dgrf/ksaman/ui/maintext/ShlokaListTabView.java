@@ -45,7 +45,7 @@ public class ShlokaListTabView implements Serializable {
 
             ubachaId = shlokaDTOList.get(i).getUbachaId();
             ubachaName = shlokaDTOList.get(i).getUbachaName();
-            ubachaBachan = shlokaDTOList.get(i).getUbachaName();
+            ubachaBachan = shlokaDTOList.get(i).getUbachaBachan();
 
             shlokaText = shlokaDTOList.get(i).getShlokaText();
             shlokaLine = shlokaDTOList.get(i).getShlokaLine();

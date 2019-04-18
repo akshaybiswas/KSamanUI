@@ -123,6 +123,27 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokaListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextView</from-outcome>
+            <to-view-id>/browse/MahabharatAnubadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{shlokaListByPaad.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{shlokaListByPaad.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{shlokaListByPaad.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/edit/maintext/ShlokaListTabView.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>TranslatedTextView</from-outcome>
@@ -141,6 +162,30 @@
                     <value>#{shlokaListTabView.shlokaNum}</value>
                 </view-param>
             </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases for Shlokapaad List to ShlokaListByPaad browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokapaadSuchiView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ShlokaListByPaad</from-outcome>
+            <to-view-id>/browse/MahabharatShlokaListByPaadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>firstChar</name>
+                    <value>#{shlokapaadSuchiList.firstChar}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for ShlokaListByPaad to  Shlokapaad List browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatShlokaListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatShlokapaadView</from-outcome>
+            <to-view-id>/browse/MahabharatShlokapaadSuchiView.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
