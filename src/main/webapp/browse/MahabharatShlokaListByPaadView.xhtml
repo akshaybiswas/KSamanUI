@@ -20,23 +20,26 @@
                     <p:button value="Back" outcome="MahabharatShlokapaadView" />
                 </div>
                 <h:form id="form">  
-                    <p:dataTable var="shloka" value="#{shlokaListByPaad.shlokaDTOList}">
+                    <p:dataTable var="shloka" value="#{shlokaListByPaad.shlokaDTOList}" paginator="true" rows="3" 
+                                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink}
+                                 {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                                 rowsPerPageTemplate="3,6,9" lazy="true">
                         <p:column>
                             <h:outputText value="#{shloka.getParvaName()}" />
                             <h:outputText value=" পর্ব" />
                         </p:column>
-                        
+
                         <p:column>
                             <h:outputText value="অধ্যায় " />
                             <h:outputText value="#{shloka.getAdhyayId()}" />
                         </p:column>
-                        
+
                         <p:column>
                             <h:outputText value="#{shloka.getUbachaName()}" />
                             <h:outputText value=" " />
                             <h:outputText value="#{shloka.getUbachaBachan()}" />
                         </p:column>
-                        
+
                         <p:column> 
                             <h:outputText value="#{shloka.getShlokaText()}" />
                         </p:column>
@@ -46,7 +49,7 @@
                             <h:outputText value="," />
                             <h:outputText value="#{shloka.getShlokaLine()}" />
                         </p:column>
-                        
+
                         <p:column headerText="Actions">
                             <p:commandButton value="Translation" action="#{shlokaListByPaad.translationView()}">
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListByPaad.selectedShloka}" />

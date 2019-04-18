@@ -50,7 +50,7 @@ public class ShlokaListByPaad implements Serializable {
 //            ubachaName = shlokaDTOList.get(i).getUbachaName();
 //            ubachaBachan = shlokaDTOList.get(i).getUbachaBachan();
 
-            shlokaText = shlokaDTOList.getRowData().getShlokaText();
+            // shlokaText = shlokaDTOList.getRowData().getShlokaText();
             
             
         }

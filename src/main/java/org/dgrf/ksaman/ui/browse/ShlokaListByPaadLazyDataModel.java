@@ -17,14 +17,20 @@ import org.primefaces.model.SortOrder;
  * @author dgrfiv
  */
 public class ShlokaListByPaadLazyDataModel extends LazyDataModel<MaintextDTO> {
+
+    /**
+     *
+     */
+    public String firstChar;
     
     public ShlokaListByPaadLazyDataModel(String firstChar) {
         System.out.println("--------- " + this + " -----------------");
         KSCoreService kSCoreService = new KSCoreService();
         this.setRowCount(kSCoreService.getShlokaCountByFirstChar(firstChar));
     }
-
-    public List<MaintextDTO> load(String firstChar, int first, int pageSize, String sortField,
+    
+    @Override
+    public List<MaintextDTO> load(int first, int pageSize, String sortField,
             SortOrder sortOrder, Map<String, Object> filters) {
         KSCoreService kSCoreService = new KSCoreService();
         List<MaintextDTO> listShlokaByPaad = kSCoreService.getShlokaListByFirstChar(firstChar, first, pageSize);
