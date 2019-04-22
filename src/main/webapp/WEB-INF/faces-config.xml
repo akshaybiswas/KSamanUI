@@ -268,4 +268,30 @@
             <to-view-id>/edit/maintext/ParvaListTabView.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    
+    
+    <!--    Navigation cases for Wordspaad List to WordsListByPaad browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatWordspaadSuchiView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>WordsListByPaad</from-outcome>
+            <to-view-id>/browse/MahabharatWordsListByPaadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>firstChar</name>
+                    <value>#{wordspaadSuchiList.firstChar}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!--    Navigation cases (Back Button) for WordsListByPaad to Wordspaad List browse only outcome-->
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatWordsListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>MahabharatWordspaadView</from-outcome>
+            <to-view-id>/browse/MahabharatWordspaadSuchiView.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>
