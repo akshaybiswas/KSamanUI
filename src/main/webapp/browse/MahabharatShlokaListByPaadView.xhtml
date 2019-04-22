@@ -20,10 +20,10 @@
                     <p:button value="Back" outcome="MahabharatShlokapaadView" />
                 </div>
                 <h:form id="form">  
-                    <p:dataTable var="shloka" value="#{shlokaListByPaad.shlokaDTOList}" paginator="true" rows="3" 
+                    <p:dataTable var="shloka" value="#{shlokaListByPaad.shlokaDTOList}" paginator="true" rows="2" 
                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink}
                                  {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                 rowsPerPageTemplate="3,6,9" lazy="true">
+                                 rowsPerPageTemplate="2,6,9" lazy="true">
                         <p:column>
                             <h:outputText value="#{shloka.getParvaName()}" />
                             <h:outputText value=" পর্ব" />
@@ -60,9 +60,9 @@
                 </h:form>
             </div>
 
-            <div class="ui-g-12 ui-md-5 ui-lg-3">
+<!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
                 Action Menu List goes here.
-            </div>
+            </div>-->
         </div>
     </ui:define>
 
