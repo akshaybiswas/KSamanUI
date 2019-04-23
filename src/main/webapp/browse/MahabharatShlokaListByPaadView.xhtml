@@ -17,7 +17,7 @@
             <div class="ui-g-12 ui-md-7 ui-lg-9">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="MahabharatShlokapaadView" />
+                    <p:button value="Back" outcome="MahabharatShlokapaadView" class="backBtn"/>
                 </div>
                 <h:form id="form">  
                     <p:dataTable var="shloka" value="#{shlokaListByPaad.shlokaDTOList}" paginator="true" rows="40" 
@@ -44,13 +44,13 @@
                             <h:outputText value="#{shloka.getShlokaText()}" />
                         </p:column>
 
-                        <p:column headerText="Number">
+                        <p:column>
                             <h:outputText value="#{shloka.getShlokaNum()}" />
                             <h:outputText value="," />
                             <h:outputText value="#{shloka.getShlokaLine()}" />
                         </p:column>
 
-                        <p:column headerText="Action">
+                        <p:column>
                             <p:commandButton value="View" action="#{shlokaListByPaad.translationView()}">
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListByPaad.selectedShloka}" />
                             </p:commandButton>

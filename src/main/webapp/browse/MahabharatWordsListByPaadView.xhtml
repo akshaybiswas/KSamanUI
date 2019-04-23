@@ -17,7 +17,7 @@
             <div class="ui-g-12 ui-md-7 ui-lg-9">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="MahabharatWordspaadView" />
+                    <p:button value="Back" outcome="MahabharatWordspaadView" class="backBtn"/>
                 </div>
                 <h:form id="form">  
                     <p:dataTable var="word" value="#{wordsListByPaad.wordDTOList}" paginator="true" rows="40" 
@@ -44,13 +44,13 @@
                             <h:outputText value="#{word.getUbachaBachan()}" />
                         </p:column>
 
-                        <p:column headerText="Number">
+                        <p:column>
                             <h:outputText value="#{word.getShlokaNum()}" />
                             <h:outputText value="," />
                             <h:outputText value="#{word.getShlokaLine()}" />
                         </p:column>
 
-                        <p:column headerText="Action">
+                        <p:column>
                             <p:commandButton value="View" action="#{wordsListByPaad.translationView()}">
                                 <f:setPropertyActionListener value="#{word}" target="#{wordsListByPaad.selectedWord}" />
                             </p:commandButton>

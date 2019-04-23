@@ -18,26 +18,26 @@
             <div class="ui-g-12 ui-md-7 ui-lg-9">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="MahabharatAdhyayView" />
+                    <p:button value="Back" outcome="MahabharatAdhyayView" class="backBtn"/>
                 </div>
                 <h:form id="form">  
                     <p:dataTable var="shloka" value="#{shlokaListTabView.shlokaDTOList}">
-                        <p:column headerText="Ubacha Name">
+                        <p:column>
                             <h:outputText value="#{shloka.getUbachaName()}" />
                             <h:outputText value=" " />
                             <h:outputText value="#{shloka.getUbachaBachan()}" />
                         </p:column>
                         
-                        <p:column headerText="Shloka Text"> 
+                        <p:column> 
                             <h:outputText value="#{shloka.getShlokaText()}" />
                         </p:column>
 
-                        <p:column headerText="Number">
+                        <p:column>
                             <h:outputText value="#{shloka.getShlokaNum()}" />
                             <h:outputText value="," />
                             <h:outputText value="#{shloka.getShlokaLine()}" />
                         </p:column>
-                        <p:column headerText="Action">
+                        <p:column>
                             <p:commandButton value="View" action="#{shlokaListTabView.viewTranslationBtn()}">
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
                             </p:commandButton>

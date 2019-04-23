@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23 Apr, 2019, 3:12:18 PM
+    Author     : dgrfiv
+*/
+
+.wrapper .main {
+    margin-left: 0px;
+}
+
+.ui-widget,
+.ui-widget .ui-widget tcolor {
+  color: #ffffff !important;
+  font-size: 20px !important;
+  }
+  
+.ui-panel .ui-panel-content panelPad {
+    padding: 2em 1em !important;
+}
+
+.ui-button, button.ui-button.ui-state-default, .ui-button.ui-state-default {
+    border: none;
+    width: 100%;
+}
+
+.card .backBtn{
+  width: 10% !important;
+  }
