@@ -24,25 +24,21 @@
                     <p:dataTable var="shloka" value="#{shlokaListTabView.shlokaDTOList}">
                         <p:column headerText="Ubacha Name">
                             <h:outputText value="#{shloka.getUbachaName()}" />
-                        </p:column>
-
-                        <p:column headerText="Ubacha Bachan">
+                            <h:outputText value=" " />
                             <h:outputText value="#{shloka.getUbachaBachan()}" />
                         </p:column>
-
+                        
                         <p:column headerText="Shloka Text"> 
                             <h:outputText value="#{shloka.getShlokaText()}" />
                         </p:column>
 
                         <p:column headerText="Number">
                             <h:outputText value="#{shloka.getShlokaNum()}" />
-                        </p:column>
-
-                        <p:column headerText="Line">
+                            <h:outputText value="," />
                             <h:outputText value="#{shloka.getShlokaLine()}" />
                         </p:column>
-                        <p:column headerText="Actions">
-                            <p:commandButton value="Translation" action="#{shlokaListTabView.viewTranslationBtn()}">
+                        <p:column headerText="Action">
+                            <p:commandButton value="View" action="#{shlokaListTabView.viewTranslationBtn()}">
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
                             </p:commandButton>
                         </p:column>
