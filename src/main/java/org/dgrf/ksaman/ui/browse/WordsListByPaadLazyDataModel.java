@@ -22,7 +22,6 @@ public class WordsListByPaadLazyDataModel extends LazyDataModel<WordsDTO> {
     public WordsListByPaadLazyDataModel(String firstChar) {
         
         this.firstChar = firstChar;
-        System.out.println("---"+firstChar);
         KSCoreService kSCoreService = new KSCoreService();
         
         this.setRowCount(kSCoreService.getWordsCountByFirstChar(firstChar));

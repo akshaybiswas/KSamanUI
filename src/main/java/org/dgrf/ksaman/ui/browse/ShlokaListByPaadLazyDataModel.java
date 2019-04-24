@@ -26,7 +26,6 @@ public class ShlokaListByPaadLazyDataModel extends LazyDataModel<MaintextDTO> {
     public ShlokaListByPaadLazyDataModel(String firstChar) {
         
         this.firstChar = firstChar;
-        System.out.println("---"+firstChar);
         KSCoreService kSCoreService = new KSCoreService();
         
         this.setRowCount(kSCoreService.getShlokaCountByFirstChar(firstChar));

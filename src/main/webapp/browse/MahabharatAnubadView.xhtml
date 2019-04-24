@@ -14,7 +14,7 @@
             <f:viewParam name="shlokaNum" value="#{translatedTextTabView.shlokaNum}"></f:viewParam>
             <f:viewAction action="#{translatedTextTabView.loadTranslatedText()}"/>
         </f:metadata>
-        <h3>Shloka Anubad</h3>
+        <h2 class="pageBanner">অনুবাদ এবং টীকা</h2>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-7 ui-lg-9">
                 <h:form id="form">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="ui-g-nopad card">
-                        <p:button value="Back" outcome="MahabharatShlokaView" class="backBtn" />
+                        <p:button value="Back" outcome="MahabharatShlokaView" title="পূর্ববর্তী পাতা" styleClass="back-button" />
                     </div>
                 </h:form>
             </div>

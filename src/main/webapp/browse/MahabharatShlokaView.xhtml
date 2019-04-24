@@ -13,32 +13,32 @@
             <f:viewParam name="adhyayId" value="#{shlokaListTabView.adhyayId}"></f:viewParam>
             <f:viewAction action="#{shlokaListTabView.loadAllShlokaList()}"/>
         </f:metadata>
-        <h3>Shloka Samagra</h3>
+        <h2 class="pageBanner">শ্লোক সমগ্র</h2>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-7 ui-lg-9">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="MahabharatAdhyayView" class="backBtn"/>
+                    <p:button value="Back" outcome="MahabharatAdhyayView" title="পূর্ববর্তী পাতা" styleClass="back-button" />
                 </div>
                 <h:form id="form">  
-                    <p:dataTable var="shloka" value="#{shlokaListTabView.shlokaDTOList}">
-                        <p:column>
+                    <p:dataTable var="shloka" value="#{shlokaListTabView.shlokaDTOList}" reflow="true" styleClass="listTab">
+                        <p:column headerText="উবাচঃ">
                             <h:outputText value="#{shloka.getUbachaName()}" />
                             <h:outputText value=" " />
                             <h:outputText value="#{shloka.getUbachaBachan()}" />
                         </p:column>
-                        
-                        <p:column> 
+
+                        <p:column headerText="শ্লোক"> 
                             <h:outputText value="#{shloka.getShlokaText()}" />
                         </p:column>
 
-                        <p:column>
+                        <p:column headerText="সংখ্যা">
                             <h:outputText value="#{shloka.getShlokaNum()}" />
                             <h:outputText value="," />
                             <h:outputText value="#{shloka.getShlokaLine()}" />
                         </p:column>
-                        <p:column>
-                            <p:commandButton value="View" action="#{shlokaListTabView.viewTranslationBtn()}">
+                        <p:column headerText="Action" class="btnBox">
+                            <p:commandButton icon="fa fa-eye" class="showBtn" action="#{shlokaListTabView.viewTranslationBtn()}" title="অনুবাদ এবং টীকা সমূহ">
                                 <f:setPropertyActionListener value="#{shloka}" target="#{shlokaListTabView.selectedShloka}" />
                             </p:commandButton>
                         </p:column>
@@ -46,10 +46,6 @@
 
                 </h:form>
             </div>
-
-<!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
-                Action Menu List goes here.
-            </div>-->
         </div>
     </ui:define>
 

@@ -12,57 +12,53 @@
             <f:viewParam name="firstChar" value="#{wordsListByPaad.firstChar}"></f:viewParam>
             <f:viewAction action="#{wordsListByPaad.loadAllShlokaList()}"/>
         </f:metadata>
-        <h3>Words Samagra By Paad</h3>
+        <h2 class="pageBanner">পদ নির্বাচিত শব্দ সমগ্র</h2>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-7 ui-lg-9">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="MahabharatWordspaadView" class="backBtn"/>
+                    <p:button value="Back" outcome="MahabharatWordspaadView" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
                 </div>
                 <h:form id="form">  
                     <p:dataTable var="word" value="#{wordsListByPaad.wordDTOList}" paginator="true" rows="40" 
                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink}
                                  {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                                  rowsPerPageTemplate="40,80,100" lazy="true">
-                        <p:column>
+                        <p:column width="20%">
                             <h:outputText value="#{word.getWordText()}" />
                         </p:column>
-                        
-                        <p:column>
+
+                        <p:column width="20%">
                             <h:outputText value="#{word.getParvaName()}" />
                             <h:outputText value=" পর্ব" />
                         </p:column>
 
-                        <p:column>
+                        <p:column width="10%">
                             <h:outputText value="অধ্যায় " />
                             <h:outputText value="#{word.getAdhyayId()}" />
                         </p:column>
 
-                        <p:column>
+                        <p:column width="20%">
                             <h:outputText value="#{word.getUbachaName()}" />
                             <h:outputText value=" " />
                             <h:outputText value="#{word.getUbachaBachan()}" />
                         </p:column>
 
-                        <p:column>
+                        <p:column width="10%">
                             <h:outputText value="#{word.getShlokaNum()}" />
                             <h:outputText value="," />
                             <h:outputText value="#{word.getShlokaLine()}" />
                         </p:column>
 
                         <p:column>
-                            <p:commandButton value="View" action="#{wordsListByPaad.translationView()}">
+                            <p:commandButton icon="fa fa-eye" action="#{wordsListByPaad.translationView()}" title="অনুবাদ এবং টীকা সমূহ">
                                 <f:setPropertyActionListener value="#{word}" target="#{wordsListByPaad.selectedWord}" />
                             </p:commandButton>
                         </p:column>
                     </p:dataTable>
-
+                    
                 </h:form>
             </div>
-
-            <!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
-                            Action Menu List goes here.
-                        </div>-->
         </div>
     </ui:define>
 

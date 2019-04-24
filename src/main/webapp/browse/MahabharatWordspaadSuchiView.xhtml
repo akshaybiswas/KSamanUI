@@ -11,31 +11,23 @@
         <f:metadata>
             <f:viewAction action="#{wordspaadSuchiList.loadAllWordspaadList()}"/>
         </f:metadata>
-        <h3>Wordspaad Samagra</h3>
+        <h2 class="pageBanner">শব্দের প্রথম পদ সমগ্র</h2>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-7 ui-lg-9">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="/index" class="backBtn"/>
+                    <p:button value="Back" outcome="/index" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
                 </div>
                 <h:form id="form">
-                    <p:dataGrid var="wordspaad" value="#{wordspaadSuchiList.wordspaadDTOList}" columns="3" layout="grid">
+                    <p:dataGrid var="wordspaad" value="#{wordspaadSuchiList.wordspaadDTOList}" columns="4" layout="grid">
 
-                        <p:panel>
-                            <h:panelGrid columns="1" style="width:100%">
-                                <p:commandButton value="#{wordspaad.getWordFirstChar()}" action="#{wordspaadSuchiList.wordsListView()}">
-                                    <f:setPropertyActionListener value="#{wordspaad}" target="#{wordspaadSuchiList.selectedWordspaad}" />
-                                </p:commandButton>
-                            </h:panelGrid>
-                        </p:panel>
-
+                        <p:commandLink action="#{wordspaadSuchiList.wordsListView()}" title="অন্তর্গত শব্দ সমূহ" styleClass="cmdLink" >
+                            <h:outputText value="#{wordspaad.getWordFirstChar()}" class="linkColor" />
+                            <f:setPropertyActionListener value="#{wordspaad}" target="#{wordspaadSuchiList.selectedWordspaad}" />
+                        </p:commandLink>
                     </p:dataGrid>
                 </h:form>
             </div>
-
-            <!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
-                            Action Menu List goes here.
-                        </div>-->
         </div>
     </ui:define>
 

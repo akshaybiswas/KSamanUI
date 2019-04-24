@@ -143,6 +143,28 @@
             </redirect>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/browse/MahabharatWordsListByPaadView.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>TranslatedTextView</from-outcome>
+            <to-view-id>/browse/MahabharatAnubadView.xhtml</to-view-id>
+            <redirect include-view-params="true">
+                <view-param>
+                    <name>parvaId</name>
+                    <value>#{wordsListByPaad.parvaId}</value>
+                </view-param>
+                <view-param>
+                    <name>adhyayId</name>
+                    <value>#{wordsListByPaad.adhyayId}</value>
+                </view-param>
+                <view-param>
+                    <name>shlokaNum</name>
+                    <value>#{wordsListByPaad.shlokaNum}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
     <navigation-rule>
         <from-view-id>/edit/maintext/ShlokaListTabView.xhtml</from-view-id>
         <navigation-case>

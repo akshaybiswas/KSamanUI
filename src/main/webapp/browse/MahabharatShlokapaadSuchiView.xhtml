@@ -11,31 +11,24 @@
         <f:metadata>
             <f:viewAction action="#{shlokapaadSuchiList.loadAllShlokapaadList()}"/>
         </f:metadata>
-        <h3>Shlokapaad Samagra</h3>
+        <h2 class="pageBanner">শ্লোকের প্রথম পদ সমগ্র</h2>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-7 ui-lg-9">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
 
                 <div class="ui-g-nopad card">
-                    <p:button value="Back" outcome="/index" class="backBtn"/>
+                    <p:button value="Back" outcome="/index" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
                 </div>
                 <h:form id="form">
-                    <p:dataGrid var="shlokapaad" value="#{shlokapaadSuchiList.shlokapaadDTOList}" columns="3" layout="grid">
+                    <p:dataGrid var="shlokapaad" value="#{shlokapaadSuchiList.shlokapaadDTOList}" columns="4" layout="grid">
 
-                        <p:panel>
-                            <h:panelGrid columns="1" style="width:100%">
-                                <p:commandButton value="#{shlokapaad.getFirstChar()}" action="#{shlokapaadSuchiList.shlokaListView()}">
-                                    <f:setPropertyActionListener value="#{shlokapaad}" target="#{shlokapaadSuchiList.selectedShlokapaad}" />
-                                </p:commandButton>
-                            </h:panelGrid>
-                        </p:panel>
+                        <p:commandLink action="#{shlokapaadSuchiList.shlokaListView()}" title="অন্তর্গত শ্লোক সমূহ" styleClass="cmdLink">
+                            <h:outputText value="#{shlokapaad.getFirstChar()}" class="linkColor" />
+                            <f:setPropertyActionListener value="#{shlokapaad}" target="#{shlokapaadSuchiList.selectedShlokapaad}" />
+                        </p:commandLink>
 
                     </p:dataGrid>
                 </h:form>
             </div>
-
-<!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
-                Action Menu List goes here.
-            </div>-->
         </div>
     </ui:define>
 

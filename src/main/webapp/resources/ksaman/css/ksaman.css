@@ -8,25 +8,92 @@ and open the template in the editor.
     Author     : dgrfiv
 */
 
+
 .wrapper .main {
     margin-left: 0px;
 }
 
-.ui-widget,
-.ui-widget .ui-widget tcolor {
-  color: #ffffff !important;
-  font-size: 20px !important;
-  }
-  
-.ui-panel .ui-panel-content panelPad {
-    padding: 2em 1em !important;
-}
-
-.ui-button, button.ui-button.ui-state-default, .ui-button.ui-state-default {
-    border: none;
+.pageBanner {
+    font-size: 56px;
     width: 100%;
+    text-align: center;
+    color: #FFFFFF;
 }
 
-.card .backBtn{
-  width: 10% !important;
-  }
+.btnBox {
+    text-align: center;
+    display: block;
+}
+.showBtn {
+    border-radius: 50%;
+}
+/*.showBtn:hover {
+    background-color: #004080;
+}*/
+/*
+.viewBtn {
+    float: right;
+    background-color: #004080;
+}*/
+
+.cmdLink {
+    background-color: #006de5;
+    display: block;
+    text-align: center;
+    padding: 30px 15px;
+    border-radius: 8px;
+    -webkit-transition: 0.5s ease-in;
+    -moz-transition: 0.5s ease-in;
+    -o-transition: 0.5s ease-in;
+    transition: 0.5s ease-in; 
+}
+
+.cmdLink:hover {
+    background-color: #004080;
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+}
+
+.cmdLink:focus {
+    background-color: #087298;
+}
+
+.cmdLink .linkColor {
+    color: white;
+    font-size: 20pt;
+}
+
+.ui-datatable {
+    text-align: center;
+}
+
+.ui-datatable thead th {
+    color: #221F4B;
+}
+
+.ui-datatable tbody tr {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: #DFDFDF;
+    color: #221F4B;
+    font-size: 14pt;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    transition: 0.2s linear; 
+}
+
+.ui-datatable tbody tr:hover {
+    background-color: #004080;
+    color: #FFFFFF;
+    height: 120%;
+}
+
+.ui-datatable th.ui-state-default {
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}

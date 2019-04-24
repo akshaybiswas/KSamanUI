@@ -10,25 +10,21 @@
         <f:metadata>
             <f:viewAction action="#{parvaListTabView.loadAllParvaList()}"/>
         </f:metadata>
-        <h3>Parva Samagra</h3>
+        <h2 class="pageBanner">পর্ব সমগ্র</h2>
         <div class="p-grid p-justify-center">
             <div class="ui-g">
                 <div class="ui-g-12 ui-md-12 ui-lg-12">
-
+                    <div class="ui-g-nopad card">
+                        <p:button value="Back" outcome="/index" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
+                    </div>
                     <h:form id="form">
-                        <p:dataView var="parva" value="#{parvaListTabView.parvaDTOList}">
+                        <p:dataGrid var="parva" value="#{parvaListTabView.parvaDTOList}" columns="3" layout="grid">
 
-                            <p:dataViewGridItem>
-                                <p:panel style="text-align:center">
-                                    <h:panelGrid style="width:100%; text-align:center" styleClass="panelPad">
-                                        <p:commandLink action="#{parvaListTabView.adhyayView()}" title="View Adhyay">
-                                            <h:outputText value="#{parva.getParvaName()}" styleClass="tcolor" />
-                                            <f:setPropertyActionListener value="#{parva}" target="#{parvaListTabView.selectedParva}" />
-                                        </p:commandLink>
-                                    </h:panelGrid>
-                                </p:panel>
-                            </p:dataViewGridItem>
-                        </p:dataView>
+                            <p:commandLink action="#{parvaListTabView.adhyayView()}" title="অন্তর্গত অধ্যায় সমূহ" styleClass="cmdLink">
+                                <h:outputText value="#{parva.getParvaName()}" class="linkColor" />
+                                <f:setPropertyActionListener value="#{parva}" target="#{parvaListTabView.selectedParva}" />
+                            </p:commandLink>
+                        </p:dataGrid>
                     </h:form>
                 </div>
                 <!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
