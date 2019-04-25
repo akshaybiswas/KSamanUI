@@ -14,35 +14,39 @@
             <f:viewParam name="shlokaNum" value="#{translatedTextTabView.shlokaNum}"></f:viewParam>
             <f:viewAction action="#{translatedTextTabView.loadTranslatedText()}"/>
         </f:metadata>
-        <h2 class="pageBanner">অনুবাদ এবং টীকা</h2>
+        <div class="pageBanner">অনুবাদ এবং টীকা</div>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-7 ui-lg-9">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
                 <h:form id="form">
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                     <div class="ui-g">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12">
-                            <h:outputText value="#{translatedTextTabView.parvaName}" />
-                            <h:outputText value=" পর্ব " />
-                            <h:outputText value=" অধ্যায় " />
-                            <h:outputText value="#{translatedTextTabView.adhyayId}" />
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <div class="anubadBox">
+                                <h:outputText value="#{translatedTextTabView.parvaName}" />
+                                <h:outputText value=" পর্ব " />
+                                <h:outputText value=" অধ্যায় " />
+                                <h:outputText value="#{translatedTextTabView.adhyayId}" />
+                            </div>
                         </div>
                     </div>
                     <div class="ui-g">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12">
-                            <h:outputText value="#{translatedTextTabView.ubachaName}" />
-                            <h:outputText value="  " />
-                            <h:outputText value="#{translatedTextTabView.ubachaBachan}" />
+                        <div class="ui-g-12 ui-md-6 ui-lg-3">
+                            <div class="anubadBox">
+                                <h:outputText value="#{translatedTextTabView.ubachaName}" />
+                                <h:outputText value="  " />
+                                <h:outputText value="#{translatedTextTabView.ubachaBachan}" />
+                            </div>
                         </div>
                     </div>
                     <div class="ui-g">
-                        <div class="ui-g-12 ui-md-12 ui-lg-12">
+                        <div class="ui-g-12 ui-md-12 ui-lg-6">
                             <p:dataTable var="shloka" value="#{translatedTextTabView.translationDTOList}">
-                                <p:column headerText="Sankha">
+                                <p:column width="15%" headerText="সংখ্যা">
                                     <h:outputText value="#{shloka.getShlokaNum()}" />
                                     <h:outputText value="," />
                                     <h:outputText value="#{shloka.getShlokaLine()}" />
                                 </p:column>
-                                <p:column headerText="Shloka">
+                                <p:column headerText="শ্লোক">
                                     <h:outputText value="#{shloka.getShlokaText()}" />
                                 </p:column>
                             </p:dataTable>
@@ -50,7 +54,9 @@
                     </div>
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-12">
-                            <h:outputText value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;"/>
+                            <div class="anubadBox">
+                                <h:outputText value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;"/>
+                            </div>
                         </div>
                     </div>
                     <div class="ui-g-nopad card">
@@ -58,9 +64,9 @@
                     </div>
                 </h:form>
             </div>
-<!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
-                Action Menu List goes here.
-            </div>-->
+            <!--            <div class="ui-g-12 ui-md-5 ui-lg-3">
+                            Action Menu List goes here.
+                        </div>-->
         </div>
     </ui:define>
 

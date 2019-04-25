@@ -23,6 +23,7 @@ and open the template in the editor.
 .btnBox {
     text-align: center;
     display: block;
+    padding: 10px 5px;
 }
 .showBtn {
     border-radius: 50%;
@@ -65,6 +66,9 @@ and open the template in the editor.
     font-size: 20pt;
 }
 
+.listTab {
+}
+
 .ui-datatable {
     text-align: center;
 }
@@ -92,8 +96,14 @@ and open the template in the editor.
 }
 
 .ui-datatable th.ui-state-default {
-    border: none;
     color: white;
     text-align: center;
     font-size: 16px;
+}
+
+.anubadBox {
+    background-color: #004080;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    font-size: 18px;
 }

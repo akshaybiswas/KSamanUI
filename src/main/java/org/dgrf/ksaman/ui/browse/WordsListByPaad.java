@@ -33,6 +33,7 @@ public class WordsListByPaad implements Serializable {
     private String firstChar;
     private String parvaName;
     private String wordText;
+    private String shlokaText;
 
     public void loadAllShlokaList() {
         wordDTOList = new WordsListByPaadLazyDataModel(firstChar);
@@ -132,4 +133,13 @@ public class WordsListByPaad implements Serializable {
     public void setWordText(String wordText) {
         this.wordText = wordText;
     }
+
+    public String getShlokaText() {
+        return shlokaText;
+    }
+
+    public void setShlokaText(String shlokaText) {
+        this.shlokaText = shlokaText;
+    }
+    
 }
