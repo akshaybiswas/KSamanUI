@@ -79,7 +79,7 @@
 }
 .landing-wrapper .landing-header {
     height: 56px;
-     background: rgba(3, 26, 63,1);
+    background: rgba(3, 26, 63,1);
     background: -moz-linear-gradient(left, rgba(3, 26, 63,0.7) 0%, rgba(2, 16, 38,0.7) 100%);
     background: -webkit-gradient(left top, right top, color-stop(0%, rgba(3, 26, 63,0.7)), color-stop(100%, rgba(2, 16, 38,0.7)));
     background: -webkit-linear-gradient(left, rgba(3, 26, 63,0.7) 0%, rgba(2, 16, 38,0.7) 100%);
@@ -151,13 +151,13 @@
 }
 /*General Button*/
 .ui-button.ui-state-default.button {
-  
+
     -webkit-transition: 0.5s ease-out;
     -moz-transition: 0.5s ease-out;
     -o-transition: 0.5s ease-out;
     transition: 0.5s ease-out; 
     background-color: #031a3f;
-    
+
 }
 .ui-button.ui-state-default.button.ui-state-hover {
     background-color: #213656; }
@@ -166,7 +166,7 @@
 
 /*Delete Button*/
 .ui-button.ui-state-default.delete-button {
-  
+
     -webkit-transition: 0.5s ease-out;
     -moz-transition: 0.5s ease-out;
     -o-transition: 0.5s ease-out;
@@ -181,7 +181,7 @@
 
 /*Back Button*/
 .ui-button.ui-state-default.back-button {
-  
+
     -webkit-transition: 0.5s ease-out;
     -moz-transition: 0.5s ease-out;
     -o-transition: 0.5s ease-out;
@@ -220,12 +220,12 @@
 }
 /*menu colour*/
 .wrapper .sidebar ul li.active-menuitem > a {
-        border-bottom: 0 none;
-        background-color: rgba(12,18,7,1);
-        color: white; 
+    border-bottom: 0 none;
+    background-color: rgba(12,18,7,1);
+    color: white; 
 }
 .wrapper .sidebar ul li.active-menuitem > ul {
-        background-color: rgba(12,18,7,1); 
+    background-color: rgba(12,18,7,1); 
 }
 /*footer color*/
 .wrapper .footer {
@@ -237,7 +237,7 @@
     background-color: rgb(38,50,56);
     border:none;
 }
-    
+
 .landing-wrapper #pricing {
     background-color: #aed581; }
 .landing-wrapper #pricing .pricing-content p {
@@ -340,34 +340,34 @@ q {
 .ui-panel  {
     background: rgb(70, 60, 209);
     border: none;
-     
+
 }
 .ui-widget-header {
     background: rgb(199, 196, 237);
     border-color: black;
-   
+
 }
 .instanceform {
-    
+
     padding: 2%;
     background: rgb(27, 20, 119);
 }
 .ui-datatable-even ,.ui-datatable-odd{
     background: rgb(199, 196, 237);
-    
+
     font-size: 12px;
 }
 .ui-datatable th.ui-state-default {
-     background: rgb(27, 20, 119);
-     border-color: black;
-     color: white;
-     text-align: left;
-     font-size: 12px;
+    background: rgb(27, 20, 119);
+    border-color: black;
+    color: white;
+    text-align: left;
+    font-size: 12px;
 }
 .ui-datatable tbody > tr.ui-widget-content {
-    
-     border-color: black;
-     
+
+    border-color: black;
+
 }
 
 .ui-corner-all {
@@ -380,11 +380,11 @@ q {
     border-radius: 0px;
 }
 .ui-panelgrid .ui-widget-content {
-     background: rgb(199, 196, 237);
-     border-color: black;
-     color: black;
-     text-align: left;
-     font-size: 12px;
+    background: rgb(199, 196, 237);
+    border-color: black;
+    color: black;
+    text-align: left;
+    font-size: 12px;
 }
 .dynaFormLabel {
     margin-bottom: 5%;
@@ -406,6 +406,6 @@ q {
     font-size: 2em;
 }
 #fractalStudio .fractalStudio-content .content {
-     padding: 1.5em;
+    padding: 1.5em;
     text-align: center;
 }
