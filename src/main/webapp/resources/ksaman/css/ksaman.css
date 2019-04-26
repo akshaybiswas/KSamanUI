@@ -148,37 +148,40 @@ and open the template in the editor.
         margin: 0 auto;
 
     }
-    .intro-container .intro-title {
-
-
-        font-size: 36px;
-        position: absolute;
-        display: block;
-    }
-    .intro-container .intro-caption {
-        padding-bottom: 30px;
-        font-size: 20px;
-        position: absolute;
-        display: block;
-    }
+    /*    .intro-container .intro-title {
+            font-size: 28px;
+            position: absolute;
+            display: block;
+        }
+        .intro-container .intro-caption {
+            padding-bottom: 30px;
+            font-size: 20px;
+            position: absolute;
+            display: block;
+        }*/
 
     .intro-container img.responsive-img {
         width: 100%;
-        height: 500px;
+        height: 450px;
+        background-position: center;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
     }
-    .intro-container .ui-button {
-        display: block;
-        position: absolute;
-        width: 250px;
-        margin: 0 auto;
-    }
+    /*    .intro-container .ui-button {
+            display: block;
+            position: absolute;
+            padding-top: 10px;
+            width: 250px;
+            height: 30px;
+            margin: 0 auto;
+        }*/
 
 }
 
-.intro-button .button {
+/*.intro-button .button {
     background-color: #087298;
     border: none;
-}
+}*/
 
 .content-text {
     padding: 30px 50px;
@@ -191,4 +194,54 @@ and open the template in the editor.
 
 .content-text .content-author {
     font-size: 24px;
+}
+
+
+blockquote {
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
+
+
+@media (max-width: 400px) {
+
+    .intro-container img.responsive-img {
+        width: 100%;
+        height: 300px;
+        background-position: center;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+    }
+
+    .content-text {
+        padding: 10px;
+        margin: 0;
+        font-size: 12px;
+        display: block;
+    }
+
+    .content-text .content-header {
+        font-size: 32px;
+    }
+
+    .content-text .content-author {
+        font-size: 18px;
+    }
+
+    blockquote {
+        border-left: 6px solid #ccc;
+    }
 }
