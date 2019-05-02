@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import org.dgrf.ksamancore.DTO.MaintextDTO;
 import org.dgrf.ksamancore.bl.service.KSCoreService;
 import org.primefaces.model.chart.PieChartModel;
 
@@ -31,20 +32,11 @@ public class landingPanel implements Serializable {
     @PostConstruct
     public void init() {
         KSCoreService kSCoreService = new KSCoreService();
-        int shloka = kSCoreService.getTotalShlokaCount();
-        int parva = kSCoreService.getTotalParvaCount();
-        int adhyay = kSCoreService.getTotalAdhyayCount();
-        int words = kSCoreService.getTotalWordsCount();
-        int ubacha = kSCoreService.getTotalUbachaCount();
+        MaintextDTO maintextDTO = kSCoreService.getTranslationPercentage();
         
         model = new PieChartModel();
-        model.set("Shloka", shloka);//jobs in thousands
-        model.set("Words", words);
-        model.set("Translations", 38000);
-        model.set("References", 31000);
-        model.set("Parva", parva);
-        model.set("Ubacha", ubacha);
-        model.set("Adhyay", adhyay);
+        model.set("Shloka", maintextDTO.getShlokaNumCount());
+        model.set("Translations", maintextDTO.getShlokaNumTranslatedCount());
 
         //followings are some optional customizations:
         //set title
@@ -56,11 +48,11 @@ public class landingPanel implements Serializable {
         //show labels inside pie chart
         model.setShowDataLabels(true);
         //show label text  as 'value' (numeric) , others are 'label', 'percent' (default). Only one can be used.
-        model.setDataFormat("value");
+        model.setDataFormat("percent");
         //format: %d for 'value', %s for 'label', %d%% for 'percent'
-        model.setDataLabelFormatString("%dK");
+        model.setDataLabelFormatString("%d%%");
         //pie sector colors
-        model.setSeriesColors("aaf,afa,faa,ffa,aff,faf,ddd");
+        model.setSeriesColors("aaf,afa");
     }
 
     public PieChartModel getModel() {
