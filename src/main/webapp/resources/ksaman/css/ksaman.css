@@ -254,3 +254,14 @@ blockquote p {
         border-left: 6px solid #ccc;
     }
 }
+
+.landing-footer .landing-footer-content .footer-bottom {
+    padding: 20px 0 20px 0;
+    text-align: center;
+}
+
+.wrapper .footer {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+}

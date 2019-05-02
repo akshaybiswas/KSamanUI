@@ -23,7 +23,7 @@
                     <p:dataTable var="word" value="#{wordsListByPaad.wordDTOList}" reflow="true" paginator="true" rows="40" 
                                  paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink}
                                  {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-                                 rowsPerPageTemplate="40,80,100" lazy="true">
+                                 rowsPerPageTemplate="40,80,100" lazy="true" reflow="true">
                         <p:column width="15%">
                             <h:outputText value="#{word.getWordText()}" />
                         </p:column>

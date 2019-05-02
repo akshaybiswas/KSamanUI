@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
@@ -28,9 +29,9 @@
                 </f:metadata>
                 <h:form>
                     <div class="ui-g ui-fluid" style="text-align: left">
-                        <p:growl id="growl" sticky="true" showDetail="true" life="5" autoUpdate="true" />
+                        <p:growl id="growl" sticky="true" showDetail="true" life="5" />
                         <div class="ui-g-6">
-                            <p:outputLabel value="Select Tenant:" />
+                            <h:outputLabel value="Select Tenant:" />
                         </div>
                         <div class="ui-g-6">
                             <p:selectOneMenu id="selectonetenant" value="#{loginController.tenantID}" required="true">
