@@ -31,9 +31,9 @@ public class WordspaadSuchiList implements Serializable {
         KSCoreService ksCoreService = new KSCoreService();
         wordspaadDTOList = ksCoreService.getShlokaWordUniqueFirstCharList();
 
-        for (int i = 0; i < wordspaadDTOList.size(); i++) {
-            firstChar = wordspaadDTOList.get(i).getWordFirstChar();
-        }
+//        for (int i = 0; i < wordspaadDTOList.size(); i++) {
+//            firstChar = wordspaadDTOList.get(i).getWordFirstChar();
+//        }
     }
     
     public String wordsListView() {

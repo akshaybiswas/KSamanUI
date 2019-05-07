@@ -17,6 +17,13 @@
             <renderer-class>org.primefaces.omega.component.menu.OmegaMenuRenderer</renderer-class>
         </renderer>
     </render-kit>
+    
+    
+    <validator>
+        <validator-id>RequiredValidator</validator-id>
+        <validator-class>com.bashan.blog.jsf.validator.RequiredValidator</validator-class>
+    </validator>
+    
     <navigation-rule>
         <from-view-id>/Login.xhtml</from-view-id>
         <navigation-case>

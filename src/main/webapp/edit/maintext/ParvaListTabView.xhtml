@@ -10,26 +10,21 @@
         <f:metadata>
             <f:viewAction action="#{parvaListTabView.loadAllParvaList()}" />
         </f:metadata>
-        <h3>Parva Samagra</h3>
+        <div class="pageBanner">পর্ব সমগ্র</div>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-7 ui-lg-9">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <div class="ui-g-nopad card">
+                    <p:button value="Back" outcome="/index" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
+                </div>
                 <h:form id="form">
                     <p:dataGrid var="parva" value="#{parvaListTabView.parvaDTOList}" columns="3" layout="grid">
 
-                        <p:panel>
-                            <h:panelGrid columns="1" style="width:100%">
-                                <p:commandButton value="#{parva.getParvaName()}" action="#{parvaListTabView.adhyayView()}">
-                                    <f:setPropertyActionListener value="#{parva}" target="#{parvaListTabView.selectedParva}" />
-                                </p:commandButton>
-                            </h:panelGrid>
-                        </p:panel>
-
+                        <p:commandLink action="#{parvaListTabView.adhyayView()}" title="অন্তর্গত অধ্যায় সমূহ" styleClass="cmdLink">
+                            <h:outputText value="#{parva.getParvaName()}" class="linkColor" />
+                            <f:setPropertyActionListener value="#{parva}" target="#{parvaListTabView.selectedParva}" />
+                        </p:commandLink>
                     </p:dataGrid>
-
                 </h:form>
-            </div>
-            <div class="ui-g-12 ui-md-5 ui-lg-3">
-                Action Menu List goes here.
             </div>
         </div>
     </ui:define>

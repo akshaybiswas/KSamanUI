@@ -20,7 +20,7 @@ import org.dgrf.ksamancore.bl.service.KSCoreService;
 @ViewScoped
 public class ShlokapaadSuchiList implements Serializable {
 
-    /**
+    /*
      * Creates a new instance of ShlokapaadSuchiList
      */
     private List<MaintextDTO> shlokapaadDTOList;
