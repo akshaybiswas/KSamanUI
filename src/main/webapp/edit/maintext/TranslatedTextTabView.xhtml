@@ -55,13 +55,14 @@
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-12">
                             <div class="anubadBox">
-                                <p:inputTextarea rows="8" value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;" required="true" requiredMessage="#{bundle.common_error_empty_value}"
+                                <p:inputTextarea rows="8" value="#{translatedTextTabView.shlokaAnubad}" style="width: 100%;" required="true"
                                                  validator="customFormValidator"/>
                             </div>
                         </div>
                     </div>
                     <div class="ui-g-nopad card">
-                        <p:commandButton value="Update" action="#{translatedTextTabView.updateShlokaAnubad()}"></p:commandButton>
+                        <p:commandButton value="Manage References" style="margin-right:20px;" rendered="#{translatedTextTabView.anubadNotIncluded}" action="#{translatedTextTabView.referencedtextView()}"/> 
+                        <p:commandButton value="Update" action="#{translatedTextTabView.updateShlokaAnubad()}" update="@form"></p:commandButton>
                         <p:button value="Back" outcome="ShlokaListTabView" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
                     </div>
                 </h:form>

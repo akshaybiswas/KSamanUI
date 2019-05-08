@@ -7,6 +7,7 @@ package org.dgrf.ksaman.ui.maintext;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -38,7 +39,9 @@ public class TranslatedTextTabView implements Serializable {
     private String shlokaText;
     private String shlokaAnubad;
     private MaintextDTO maintextDTO;
+    private Boolean anubadNotIncluded;
 
+    
     public void loadTranslatedText() {
         KSCoreService ksCoreService = new KSCoreService();
         translationDTOList = ksCoreService.getMaintextTranslation(parvaId, adhyayId, shlokaNum);
@@ -52,8 +55,11 @@ public class TranslatedTextTabView implements Serializable {
             shlokaNum = translationDTOList.get(0).getShlokaNum();
             adhyayId = translationDTOList.get(0).getAdhyayId();
             shlokaAnubad = translationDTOList.get(0).getAnubadText();
-
+            
+            anubadNotIncluded = true;
+            
             if (shlokaAnubad == null) {
+                anubadNotIncluded = false;
                 shlokaAnubad = "অনুবাদ করা হয় নি";
             }
         }
@@ -64,6 +70,10 @@ public class TranslatedTextTabView implements Serializable {
             shlokaLine = translationDTOList.get(i).getShlokaLine();
 
         }
+    }
+    
+    public String referencedtextView() {
+        return "ReferencedTextTabView";
     }
     
     public String updateShlokaAnubad() {
@@ -77,8 +87,13 @@ public class TranslatedTextTabView implements Serializable {
         maintextDTO.setParvaId(parvaId);
         maintextDTO.setAdhyayId(adhyayId);
         maintextDTO.setShlokaNum(shlokaNum);
-        maintextDTO.setAnubadText(shlokaAnubad);
-
+        
+        if(shlokaAnubad.trim().equals("অনুবাদ করা হয় নি")) {
+            maintextDTO.setAnubadText(null);
+        } else {
+            maintextDTO.setAnubadText(shlokaAnubad);
+        }
+        
         KSCoreService kSCoreService = new KSCoreService();
         responseCode = kSCoreService.updateMaintextTranslation(maintextDTO);
 
@@ -184,5 +199,21 @@ public class TranslatedTextTabView implements Serializable {
     public void setParvaName(String parvaName) {
         this.parvaName = parvaName;
     }
-  
+
+    public MaintextDTO getMaintextDTO() {
+        return maintextDTO;
+    }
+
+    public void setMaintextDTO(MaintextDTO maintextDTO) {
+        this.maintextDTO = maintextDTO;
+    }
+
+    public Boolean getAnubadNotIncluded() {
+        return anubadNotIncluded;
+    }
+
+    public void setAnubadNotIncluded(Boolean anubadNotIncluded) {
+        this.anubadNotIncluded = anubadNotIncluded;
+    }
+    
 }

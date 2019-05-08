@@ -25,13 +25,12 @@ public class CustomFormValidator implements Validator {
     public void validate(FacesContext context, UIComponent component,
             Object value) throws ValidatorException {
         //Check if user has typed only blank spaces
-        if (value.toString().trim().isEmpty()) {
-            context.getExternalContext().getFlash().setKeepMessages(true);
+        int strLength = value.toString().trim().length();
+        if (( strLength == 0) || (value.toString().trim().equals("অনুবাদ করা হয় নি"))) {
             FacesMessage msg
                     = new FacesMessage("Incorrect input provided",
                             "The input must provide some meaningful character");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            context.addMessage(null, msg);
             throw new ValidatorException(msg);
 
         }
