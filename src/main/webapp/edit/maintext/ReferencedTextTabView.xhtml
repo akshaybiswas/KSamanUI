@@ -22,7 +22,7 @@
                     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-8">
-                            <p:dataTable var="tika" value="#{referencedTextTabView.referenceDTOList}">
+                            <p:dataTable var="tika" value="#{referencedTextTabView.maintextDTOList}">
                                 <p:column width="15%" headerText="সংখ্যা">
                                     <h:outputText value="#{tika.getShlokaNum()}" />
                                     <h:outputText value="," />
@@ -45,10 +45,10 @@
                         <div class="ui-g-12 ui-md-12 ui-lg-12">
                             <p:dataTable var="tika" value="#{referencedTextTabView.referenceDTOList}">
                                 <p:column width="15%" headerText="সংখ্যা">
-                                    <h:outputText value="#{tika.getShlokaNum()}" />
+                                    <h:outputText value="#{tika.getRefTextId()}" />
                                 </p:column>
                                 <p:column headerText="শ্লোক">
-                                    <h:outputText value="#{tika.getShlokaText()}" />
+                                    <h:outputText value="#{tika.getRefText()}" />
                                 </p:column>
                             </p:dataTable>
                         </div>

@@ -35,7 +35,7 @@ public class ReferencedTextTabView implements Serializable{
     private String shlokaAnubad;
     private List<MaintextDTO> maintextDTOList;
     
-    public void loadTranslatedText() {
+    public void loadTReferencedText() {
         KSCoreService ksCoreService = new KSCoreService();
         referenceDTOList = ksCoreService.getReftextList(parvaId, adhyayId, shlokaNum, shlokaLine);
         maintextDTOList = ksCoreService.getMaintextTranslation(parvaId, adhyayId, shlokaNum);
@@ -55,6 +55,94 @@ public class ReferencedTextTabView implements Serializable{
             shlokaLine = maintextDTOList.get(i).getShlokaLine();
 
         }
+        for(int j = 0; j < referenceDTOList.size(); j++) {
+
+            refTextId = referenceDTOList.get(j).getRefTextId();
+            refText = referenceDTOList.get(j).getRefText();
+
+        }
     }
+
+    public List<ReferencetextDTO> getReferenceDTOList() {
+        return referenceDTOList;
+    }
+
+    public void setReferenceDTOList(List<ReferencetextDTO> referenceDTOList) {
+        this.referenceDTOList = referenceDTOList;
+    }
+
+    public int getParvaId() {
+        return parvaId;
+    }
+
+    public void setParvaId(int parvaId) {
+        this.parvaId = parvaId;
+    }
+
+    public int getAdhyayId() {
+        return adhyayId;
+    }
+
+    public void setAdhyayId(int adhyayId) {
+        this.adhyayId = adhyayId;
+    }
+
+    public int getShlokaLine() {
+        return shlokaLine;
+    }
+
+    public void setShlokaLine(int shlokaLine) {
+        this.shlokaLine = shlokaLine;
+    }
+
+    public int getShlokaNum() {
+        return shlokaNum;
+    }
+
+    public void setShlokaNum(int shlokaNum) {
+        this.shlokaNum = shlokaNum;
+    }
+
+    public int getRefTextId() {
+        return refTextId;
+    }
+
+    public void setRefTextId(int refTextId) {
+        this.refTextId = refTextId;
+    }
+
+    public String getRefText() {
+        return refText;
+    }
+
+    public void setRefText(String refText) {
+        this.refText = refText;
+    }
+
+    public String getShlokaText() {
+        return shlokaText;
+    }
+
+    public void setShlokaText(String shlokaText) {
+        this.shlokaText = shlokaText;
+    }
+
+    public String getShlokaAnubad() {
+        return shlokaAnubad;
+    }
+
+    public void setShlokaAnubad(String shlokaAnubad) {
+        this.shlokaAnubad = shlokaAnubad;
+    }
+
+    public List<MaintextDTO> getMaintextDTOList() {
+        return maintextDTOList;
+    }
+
+    public void setMaintextDTOList(List<MaintextDTO> maintextDTOList) {
+        this.maintextDTOList = maintextDTOList;
+    }
+    
+    
     
 }
