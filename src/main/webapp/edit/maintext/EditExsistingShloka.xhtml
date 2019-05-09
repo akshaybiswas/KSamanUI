@@ -49,7 +49,7 @@
             </p:panelGrid>
 
             <div class="card">
-                <p:commandButton value="Update" action="#{editExsistingShloka.updateShloka()}"></p:commandButton>
+                <p:commandButton value="Update" action="#{editExsistingShloka.updateShloka()}" update="@form"></p:commandButton>
                 <p:commandButton value="Back" action="#{editExsistingShloka.previousPage()}"></p:commandButton>
             </div>
         </h:form>
