@@ -24,8 +24,6 @@ public class landingPanel implements Serializable {
     /**
      * Creates a new instance of landingPanel
      */
-    public landingPanel() {
-    }
 
     private PieChartModel model;
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.dgrf.ksaman.ui.referencetext;
+package org.dgrf.ksaman.ui.maintext;
 
 import java.io.Serializable;
 import java.util.List;
@@ -24,11 +24,11 @@ public class ReferencedTextTabView implements Serializable{
     /**
      * Creates a new instance of ReferencedTextTabView
      */
-    private List<ReferencetextDTO> referenceDTOList;
+    private List<ReferencetextDTO> referencetextDTOList;
     private int parvaId;
     private int adhyayId;
-    private int shlokaLine;
     private int shlokaNum;
+    private int shlokaLine;
     private int refTextId;
     private String refText;
     private String shlokaText;
@@ -37,7 +37,16 @@ public class ReferencedTextTabView implements Serializable{
     
     public void loadTReferencedText() {
         KSCoreService ksCoreService = new KSCoreService();
-        referenceDTOList = ksCoreService.getReftextList(parvaId, adhyayId, shlokaNum, shlokaLine);
+        
+        referencetextDTOList = ksCoreService.getReftextList(parvaId, adhyayId, shlokaNum, shlokaLine);
+        
+        for(int j = 0; j < referencetextDTOList.size(); j++) {
+
+            refTextId = referencetextDTOList.get(j).getRefTextId();
+            refText = referencetextDTOList.get(j).getRefText();
+
+        }
+        
         maintextDTOList = ksCoreService.getMaintextTranslation(parvaId, adhyayId, shlokaNum);
 
         if (maintextDTOList.size() != 0) {
@@ -55,20 +64,24 @@ public class ReferencedTextTabView implements Serializable{
             shlokaLine = maintextDTOList.get(i).getShlokaLine();
 
         }
-        for(int j = 0; j < referenceDTOList.size(); j++) {
-
-            refTextId = referenceDTOList.get(j).getRefTextId();
-            refText = referenceDTOList.get(j).getRefText();
-
-        }
+        
+        
+    }
+    
+    public String addReferenceView() {
+        parvaId = maintextDTOList.get(0).getParvaId();
+        adhyayId = maintextDTOList.get(0).getAdhyayId();
+        shlokaNum = maintextDTOList.get(0).getShlokaNum();
+        shlokaLine = 1;
+        return "AddReferenceView";
     }
 
-    public List<ReferencetextDTO> getReferenceDTOList() {
-        return referenceDTOList;
+    public List<ReferencetextDTO> getReferencetextDTOList() {
+        return referencetextDTOList;
     }
 
-    public void setReferenceDTOList(List<ReferencetextDTO> referenceDTOList) {
-        this.referenceDTOList = referenceDTOList;
+    public void setReferencetextDTOList(List<ReferencetextDTO> referencetextDTOList) {
+        this.referencetextDTOList = referencetextDTOList;
     }
 
     public int getParvaId() {
@@ -142,7 +155,5 @@ public class ReferencedTextTabView implements Serializable{
     public void setMaintextDTOList(List<MaintextDTO> maintextDTOList) {
         this.maintextDTOList = maintextDTOList;
     }
-    
-    
-    
+          
 }

@@ -7,7 +7,6 @@ package org.dgrf.ksaman.ui.maintext;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -73,7 +72,11 @@ public class TranslatedTextTabView implements Serializable {
     }
     
     public String referencedtextView() {
-        return "ReferencedTextTabView";
+        parvaId = translationDTOList.get(0).getParvaId();
+        adhyayId = translationDTOList.get(0).getAdhyayId();
+        shlokaNum = translationDTOList.get(0).getShlokaNum();
+        shlokaLine = translationDTOList.get(0).getShlokaLine();
+        return "ReferencedTextView";
     }
     
     public String updateShlokaAnubad() {

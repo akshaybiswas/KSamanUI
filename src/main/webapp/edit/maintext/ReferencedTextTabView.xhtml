@@ -37,17 +37,17 @@
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-12">
                             <div class="anubadBox">
-                                <h:outputText value="#{referencedTextTabView.shlokaAnubad}" style="width: 100%;"/>
+                                <h:outputText value="#{referencedTextTabView.shlokaAnubad}"  style="width: 100%;"/>
                             </div>
                         </div>
                     </div>
                     <div class="ui-g">
                         <div class="ui-g-12 ui-md-12 ui-lg-12">
-                            <p:dataTable var="tika" value="#{referencedTextTabView.referenceDTOList}">
-                                <p:column width="15%" headerText="সংখ্যা">
+                            <p:dataTable var="tika" value="#{referencedTextTabView.referencetextDTOList}">
+                                <p:column width="10%" headerText="সংখ্যা">
                                     <h:outputText value="#{tika.getRefTextId()}" />
                                 </p:column>
-                                <p:column headerText="শ্লোক">
+                                <p:column headerText="টীকা">
                                     <h:outputText value="#{tika.getRefText()}" />
                                 </p:column>
                             </p:dataTable>
@@ -55,6 +55,7 @@
                     </div>
                     <div class="ui-g-nopad card">
                         <p:button value="Back" outcome="TranslatedTextTabView" title="পূর্ববর্তী পাতা" styleClass="back-button"/>
+                        <p:commandButton value="Add New Reference" action="#{referencedTextTabView.addReferenceView()}" styleClass="back-button"/>
                     </div>
                 </h:form>
             </div>
